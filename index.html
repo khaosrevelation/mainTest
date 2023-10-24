@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <script>
+      // URL du site que vous souhaitez récupérer
+      const siteUrl = 'https://dropnudes.com/';
+
+      // Utilisation de la fonction fetch pour récupérer le contenu du site
+      fetch(siteUrl)
+      .then(response => response.text())
+      .then(html => {
+         // Créez un élément temporaire pour stocker le contenu HTML
+         const tempElement = document.createElement('div');
+         tempElement.innerHTML = html;
+
+         // Récupérez la balise <section> et son contenu
+         const sectionElement = tempElement.querySelector('section');
+
+         // Insérez la balise <section> et son contenu dans votre propre document
+         if (sectionElement) {
+            document.body.appendChild(sectionElement);
+         }
+      })
+      .catch(error => {
+         console.error('Une erreur s\'est produite :', error);
+      });
+
+   </script>
+</body>
+</html>
